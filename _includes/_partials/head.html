@@ -4,8 +4,9 @@
 
 
 {% if site.pace %}
-  {% assign pace_css_uri = site.vendors._internal | append: '/pace/'| append: site.pace_theme | append: '.min.css?v=1.0.2' | relative_url %}
-  {% assign pace_js_uri = site.vendors._internal | append: '/pace/pace.min.js?v=1.0.2' | relative_url %}
+  {# 修正: 刪除 relative_url，並將 site.baseurl 加入路徑開頭 #}
+  {% assign pace_css_uri = site.baseurl | append: site.vendors._internal | append: '/pace/'| append: site.pace_theme | append: '.min.css?v=1.0.2' %}
+  {% assign pace_js_uri = site.baseurl | append: site.vendors._internal | append: '/pace/pace.min.js?v=1.0.2' %}
     {% if site.vendors.pace %}
       {% assign pace_js_uri = site.vendors.pace %}
     {% endif %}
@@ -18,7 +19,8 @@
 
 
 {% if site.han %}
-  {% assign Han_uri = site.vendors._internal | append: '/Han/dist/han.min.css?v=3.3' | relative_url %}
+  {# 修正: 刪除 relative_url，並將 site.baseurl 加入路徑開頭 #}
+  {% assign Han_uri = site.baseurl | append: site.vendors._internal | append: '/Han/dist/han.min.css?v=3.3' %}
   {% if site.vendors.Han %}
     {% assign Han_uri = site.vendors.Han %}
   {% endif %}
@@ -52,7 +54,8 @@
 
 
 {% if site.fancybox %}
-  {% assign fancybox_css_uri = site.vendors._internal | append: '/fancybox/source/jquery.fancybox.css?v=2.1.5' | relative_url %}
+  {# 修正: 刪除 relative_url，並將 site.baseurl 加入路徑開頭 #}
+  {% assign fancybox_css_uri = site.baseurl | append: site.vendors._internal | append: '/fancybox/source/jquery.fancybox.css?v=2.1.5' %}
   {% if site.vendors.fancybox_css %}
     {% assign fancybox_css_uri = site.vendors.fancybox_css %}
   {% endif %}
@@ -61,12 +64,14 @@
 
 {% include _partials/head/external-fonts.html %}
 
-{% assign font_awesome_uri = site.vendors._internal | append: '/font-awesome/css/font-awesome.min.css?v=4.6.2' | relative_url %}
+{# 修正: 刪除 relative_url，並將 site.baseurl 加入路徑開頭 #}
+{% assign font_awesome_uri = site.baseurl | append: site.vendors._internal | append: '/font-awesome/css/font-awesome.min.css?v=4.6.2' %}
 {% if site.vendors.fontawesome %}
   {% assign font_awesome_uri = site.vendors.fontawesome %}
 {% endif %}
 <link href="{{ font_awesome_uri }}" rel="stylesheet" type="text/css" />
 
+{# 主樣式表：維持之前修正，使用 site.baseurl #}
 <link href="{{ site.baseurl }}/assets/css/main.css?v={{ site.version }}" rel="stylesheet"
 
 {% if page.keywords %}
@@ -82,12 +87,14 @@
   {% assign site_rss = site.feed.path %}
 {% endif %}
 {% if site_rss %}
-  <link rel="alternate" href="{{ site_rss | relative_url }}" title="{{ site.title }}" type="application/atom+xml" />
+  {# 修正: 刪除 relative_url，改用 prepend 加上 site.baseurl #}
+  <link rel="alternate" href="{{ site_rss | prepend: site.baseurl }}" title="{{ site.title }}" type="application/atom+xml" />
 {% endif %}
 
 
 {% if site.favicon %}
-  <link rel="shortcut icon" type="image/x-icon" href="{{ site.favicon | relative_url }}?v={{ site.version }}" />
+  {# 修正: 刪除 relative_url，改用 prepend 加上 site.baseurl #}
+  <link rel="shortcut icon" type="image/x-icon" href="{{ site.favicon | prepend: site.baseurl }}?v={{ site.version }}" />
 {% endif %}
 
 
