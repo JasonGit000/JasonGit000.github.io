@@ -1,6 +1,6 @@
 ---
 # YAML Front Matter：文章設定區塊
-title: "第一篇紀錄：部落格搭建與心情"
+title: "第1篇紀錄：部落格搭建與心情"
 description: 這是一篇由Gemini生成的文章，記錄合作第一次從零開始打造Git網站的紀錄。AI生成顯示了積極的文風，但仍可以從字裡行間感受到些許不自然。
 categories: Test     # 這是您的分類，可以自己決定
 tags: Jekyll           # 這是文章的標籤
