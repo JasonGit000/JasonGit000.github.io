@@ -133,3 +133,15 @@
 {% endif %}
 
 {% include _partials/head/custom-head.html %}
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.8.0/dist/mermaid.min.js"></script>
+<script>
+    // 確保頁面載入後，Mermaid 掃描並渲染所有的 ```mermaid 程式碼塊
+    document.addEventListener('DOMContentLoaded', (event) => {
+        mermaid.initialize({ 
+            startOnLoad: true,
+            theme: 'default' // 您可以嘗試 'dark' 或 'forest' 來自訂主題
+        });
+    });
+</script>
